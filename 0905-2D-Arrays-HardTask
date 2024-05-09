@@ -1,0 +1,50 @@
+/*
+
+Hard: 
+1. Hide a number 10 in the array somewhere
+2. Do not print out the values immediately
+3. ask the user for the row and column and then tell them the value that was found
+4. Make them repeat until they find 10
+
+*/
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {      
+      Random random = new Random();
+
+      int row = random.nextInt(10);
+      int column = random.nextInt(10);
+      int[][] array = new int[10][10];
+
+      array[row][column] = 10;
+      
+      boolean isGameFinished = false;
+
+      Scanner scanner = new Scanner(System.in);
+
+      while(!isGameFinished){
+        System.out.println("Enter a row: ");
+        int rowGuess = scanner.nextInt();
+
+        System.out.println("Enter a column: ");
+        int columnGuess = scanner.nextInt();
+
+        if(array[rowGuess][columnGuess] == 10){
+          System.out.println("You found the number! It was hidden here: ");
+          for(int i = 0; i < array.length; i++){
+            for(int j = 0; j < array[i].length; j++){
+              System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+          }
+          isGameFinished = true;
+        }else{
+          System.out.println("Try again!");
+        }
+      }  
+      scanner.close();    
+    }  
+}
